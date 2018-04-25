@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{{url_for('showCatalog')}}">Catalog App</a>
+
+  <!-- Links -->
+
+        <div class="dropdown pull-right">
+          <button type="button" class="btn btn-link navbar-link dropdown-toggle" data-toggle="dropdown">
+          <i class="fas fa-users"></i>  {{ current_user.username }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{url_for('registerNewUser')}}">Register</a>
+              <a class="dropdown-item" href="{{url_for('showLogin')}}" class="dropdown-item">Login</a>
+               <a class="dropdown-item" href="{{url_for('logout')}}" class="dropdown-item">Logout</a>
+              <a class="dropdown-item" href="{{url_for('getAllAccounts')}} ">Users</a>
+              <a class="dropdown-item" href="{{url_for('getAllCategories') }}">Catalog</a>
+              <a class="dropdown-item" href="{{url_for('getAllItems') }}">Items</a>
+          </div>
+        </div>
+
+    </div>
+
+</nav>

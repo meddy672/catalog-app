@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "head.html" %}
+<body>
+
+{% include "navbar.html" %}
+
+<div class="container">
+
+    <div class ="row">
+        <div class="col-sm-6 col-6-container">
+
+            <div class="col-sm-12">
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+
+                    <ul>
+                    {% for message in messages %}
+                        <li style="list-style: none;">
+                            <div class="alert alert-success alert-dismissible">
+                              <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              <strong>Success!</strong> {{ message }}.
+                            </div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+
+            <h3>Create Account</h3>
+            <form action="{{url_for('registerNewUser')}}" method="post">
+              <div class="form-group">
+                <label for="userName">Username:</label>
+                <input type="text" class="form-control" name="userName" id="userName">
+              </div>
+
+                <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" id="password">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
