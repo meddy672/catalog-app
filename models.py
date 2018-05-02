@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -14,9 +14,9 @@ Base = declarative_base()
 class User(Base, UserMixin):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    username = Column(String(32), index=True)
+    username = Column(String(32), index=True, unique=True)
     hash_password = Column(String(80))
-
+    UniqueConstraint('username')
 
     def hashed_password(self, password):
         self.hash_password = pwd_context.encrypt(password)
@@ -35,7 +35,6 @@ class User(Base, UserMixin):
 
     def get_id(self):
         return unicode(self.id)
-
 
     @property
     def serializable(self):
@@ -72,8 +71,6 @@ class Item(Base):
             'catalog_id': self.catalog_id,
             'user_id': self.user_id
         }
-
-
 
 
 engine = create_engine('sqlite:///catalog.db')

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include "head.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
 <body>
 
 {% include "navbar.html" %}
@@ -11,23 +13,10 @@
         <div class="col-sm-6" style="margin-left:auto; margin-right:auto;">
             <h3>Edit: {{item.name}}</h3>
             <form action="{{ url_for('editItem', item_name=item.name) }}" method="post">
-              <div class="form-group">
-                <label for="itemName">Item Name</label>
-                <input type="text" class="form-control" name="itemName" id="itemName" value="{{item.name}}">
-              </div>
-              <div class="form-group">
-                <label for="description">Description</label>
-                  <textarea rows="5" class="form-control" name="description"
-                            id="description">{{item.description}}</textarea>
-              </div>
-                <div class="form-group">
-                    <label for="categoryid">Category</label>
-                    <select class="form-control" name="categoryid" id="categoryid">
-                        {% for c in category %}
-                        <option value="{{c.id}}">{{c.name}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+                  {{ form.hidden_tag() }}
+                  {{ wtf.form_field(form.itemName) }}
+                  {{ wtf.form_field(form.description) }}
+                  {{ wtf.form_field(form.categoryid) }}
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 

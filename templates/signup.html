@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include "head.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
 <body>
 
 {% include "navbar.html" %}
@@ -31,16 +33,10 @@
 
             <h3>Create Account</h3>
             <form action="{{url_for('registerNewUser')}}" method="post">
-              <div class="form-group">
-                <label for="userName">Username:</label>
-                <input type="text" class="form-control" name="userName" id="userName">
-              </div>
 
-                <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" name="password" id="password">
-              </div>
-
+                {{ form.hidden_tag() }}
+                {{ wtf.form_field(form.username) }}
+                {{ wtf.form_field(form.password) }}
               <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>
