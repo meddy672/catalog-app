@@ -1,9 +1,10 @@
 # Overview
-This application is to demostrate an application built with python and flask framework and implements basic CRUD operations.
-The application uses **SQLAlchemy** for database models, **Flask LoginMager** for authorization and **Flask WTF Forms**.
+This is to demostrate an application built with python and flask framework which implements basic CRUD operations.
+The application uses **SQLAlchemy** for database models, **Flask LoginMager** and has two different options for authorization
+and authenication. A user can either sign in by creating an account with the system or by use of Google account. 
 
 ### Features
-- Create New Accounts
+- Create Accounts
 - Create Items Within A Category
 - Edit & Delete Only Your Items
 - View JSON Endpoint Entire Catalog
