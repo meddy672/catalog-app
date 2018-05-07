@@ -496,12 +496,14 @@ def logout():
         return redirect(url_for('showCatalog'))
 
 
+@login_required
 @app.route('/categories/JSON')
 def categoriesJSON():
     catalog = session.query(Catalog).all()
     return jsonify(Categories=[r.serializable for r in catalog])
 
 
+@login_required
 @app.route('/item/JSON')
 def itemJSON():
     item = session.query(Item).filter_by(id=1)
