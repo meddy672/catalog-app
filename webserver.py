@@ -197,7 +197,7 @@ def deleteItem(item_name):
 
     # Check to see if current user is item creator
 
-    if login_session.get('user_id') and str(item.user_id) in login_session['user_id']:
+    if login_session.get('user_id') == item.user_id:
 
         # Delete selected item, set message and redirect user
 
@@ -496,10 +496,16 @@ def logout():
         return redirect(url_for('showCatalog'))
 
 
-@app.route('/user/JSON')
-def restaurantsJSON():
-    user = session.query(User).all()
-    return jsonify(User=[r.serializable for r in user])
+@app.route('/categories/JSON')
+def categoriesJSON():
+    catalog = session.query(Catalog).all()
+    return jsonify(Categories=[r.serializable for r in catalog])
+
+
+@app.route('/item/JSON')
+def itemJSON():
+    item = session.query(Item).filter_by(id=1)
+    return jsonify(Item=[r.serializable for r in item])
 
 
 @app.route('/catalog/JSON/')
