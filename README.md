@@ -1,6 +1,6 @@
 # Overview
 This is to demostrate an application built with python and flask framework which implements basic CRUD operations.
-The application uses **SQLAlchemy** for database models, **Flask LoginMager** and has two different options for authorization
+The application uses **SQLAlchemy** for database models, and has two different options for authorization
 and authenication. A user can either sign in by creating an account with the system or by use of Google account. 
 
 ### Features
